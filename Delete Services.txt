@@ -1,0 +1,31 @@
+get-service  |  where {$_.displayname -like "*EIAG*"} | foreach{cmd /c sc delete $_.name}
+
+get-service  |  where {$_.displayname -like "*EIAG*"} | foreach{cmd /c sc delete $_.name}
+
+
+
+
+
+
+get-service  |  where {$_.displayname -match "issq*"} | foreach{Set-Service -name $_.displayname –StartupType "Manual"}
+
+
+Set-Service "issq*" –StartupType "Manual" |  where {$_.displayname -match "issq*"}
+
+Set-Service –Name theservice –StartupType “selectedType”
+
+
+
+get-service  |  where {$_.displayname -match "issq*"} | foreach{cmd /c sc stop $_.name}
+get-service  |  where {$_.displayname -match "issq*"} | foreach{cmd /c sc start $_.name}
+get-service  |  where {$_.displayname -like "*EIAG*"} | foreach{cmd /c sc start $_.name}
+
+
+
+get-service  |  where {$_.displayname -like "ISSQ ORSUS-IAM ETLService"} | foreach{cmd /c sc start $_.name}
+get-service  |  where {$_.displayname -like "ISSQ ORSUS-IAM ISSQPolicyEngine"} | foreach{cmd /c sc start $_.name}
+get-service  |  where {$_.displayname -like "*Transformation*"} | foreach{cmd /c sc start $_.name}
+get-service  |  where {$_.displayname -like "*Provision*"} | foreach{cmd /c sc start $_.name}
+get-service  |  where {$_.displayname -like "*Reconcile*"} | foreach{cmd /c sc start $_.name}
+get-service  |  where {$_.displayname -like "*Correlation*"} | foreach{cmd /c sc start $_.name}
+

@@ -1,0 +1,18 @@
+
+# script to search all services logs with filter
+
+$files =  @(
+"\\server1\logs$\",
+"\\server2\logs$\",
+"\\server3\logs$\",
+"\\server4\logs$\" )
+
+
+Get-ChildItem -Recurse $files -filter *provision* `
+	|Where-Object {  ($_.lastwritetime.month -eq 12 -AND $_.lastwritetime.year -eq 2022 -AND $_.lastwritetime.day -eq 30)} `
+	| Select-String  "123987690"  | select linenumber,path 
+	
+
+
+
+
